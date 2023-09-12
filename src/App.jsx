@@ -6,7 +6,7 @@ import Puppy from "./Puppy";
 
 function App() {
   const [puppyPlayers, setPuppyPlayers] = useState([]);
-  //const [teams, setTeams] = useState([]);
+  const [teams, setTeams] = useState([]);
 
 
   useEffect(() => {
@@ -16,11 +16,11 @@ function App() {
       );
       //console.log(response.data.data.players);
       setPuppyPlayers(response.data.data.players);
-      // response = await axios.get(
-      //   "https://fsa-puppy-bowl.herokuapp.com/api/2307-FTB-ET-WEB-FT/teams"
-      // );
-      // console.log(response.data.data.teams);
-      // setTeams(response.data.data.teams);
+      response = await axios.get(
+        "https://fsa-puppy-bowl.herokuapp.com/api/2307-FTB-ET-WEB-FT/teams"
+      );
+      console.log(response.data.data.teams);
+      setTeams(response.data.data.teams);
     };
     fetchData();
   }, []);
@@ -46,7 +46,7 @@ function App() {
             </ul>
             </div>
         }/>
-        {<Route path='/:id' element= {<Puppy pups={puppyPlayers} />} /> }
+        {<Route path='/:id' element= {<Puppy pups={puppyPlayers} teams={teams}/>} /> }
       </Routes>
     </>
   );
