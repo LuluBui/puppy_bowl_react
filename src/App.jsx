@@ -14,12 +14,12 @@ function App() {
       let response = await axios.get(
         "https://fsa-puppy-bowl.herokuapp.com/api/2307-FTB-ET-WEB-FT/players"
       );
-      //console.log(response.data.data.players);
+      console.log(response.data.data.players);
       setPuppyPlayers(response.data.data.players);
       response = await axios.get(
         "https://fsa-puppy-bowl.herokuapp.com/api/2307-FTB-ET-WEB-FT/teams"
       );
-      console.log(response.data.data.teams);
+      //console.log(response.data.data.teams);
       setTeams(response.data.data.teams);
     };
     fetchData();

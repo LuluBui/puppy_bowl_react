@@ -5,10 +5,18 @@ function Puppy({pups,teams}){
     const param = useParams();
     const id = param.id*1;
     const puppy = pups.find((pup) => pup.id === id);
+    if(!puppy)return null;
+
+    if(puppy.teamId === null){
+        puppy.teamId = 149;
+    }
+    
     const team = teams.find((i) => {
         return i.id === puppy.teamId;
     });
-    if(!puppy || !team)return null;
+    
+    if(!team)return null;
+
 return <div>
     <a href=""> Return to Home </a>
     <div>
